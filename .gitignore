@@ -23,7 +23,7 @@ pnpm-debug.log*
 Thumbs.db
 
 # Env files
-.env*
+
 
 # VSCode settings
 .vscode/
@@ -53,4 +53,4 @@ Thumbs.db
 exported/
 
 # MSW service worker
-public/mockServiceWorker.js 
+public/mockServiceWorker.js

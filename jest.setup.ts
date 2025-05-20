@@ -1,0 +1,28 @@
+/*
+  setupFilesAfterEnv will be executed:
+  **AFTER** the test framework has been installed in the environment.
+*/
+
+import "@testing-library/jest-dom";
+
+import { server } from "./msw-config/msw-server";
+
+// ===== MSW Setup =====
+
+beforeAll(() => {
+  // Enable API mocking before all the tests.
+  server.listen();
+  // server.listen({ onUnhandledRequest: 'error' });
+});
+
+afterEach(() => {
+  // Reset the request handlers between each test.
+  // This way the handlers we add on a per-test basis
+  // do not leak to other, irrelevant tests.
+  server.resetHandlers();
+});
+
+afterAll(() => {
+  // Finally, disable API mocking after the tests are done.
+  server.close();
+});
